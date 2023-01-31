@@ -1,0 +1,153 @@
+@Very-dark-blue: hsl(233, 47%, 7%);
+@Dark-desaturated-blue: hsl(244, 38%, 16%);
+@Soft-violet: hsl(277, 64%, 61%);
+@White: hsl(0, 0%, 100%);
+@Slightly-transparent-white-paragraph: hsla(0, 0%, 100%, 0.75);
+@Slightly-transparent-white-headings: hsla(0, 0%, 100%, 0.6);
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  margin: 15px;
+  align-items: center;
+  justify-content: center;
+  background-color: @Very-dark-blue;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "img" "content";
+  max-width: 330px;
+  background-color: @Dark-desaturated-blue;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+picture {
+  aspect-ratio: 654 / 480;
+  overflow: hidden;
+  position: relative;
+  grid-area: img;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #550081;
+    opacity: 0.5;
+  }
+}
+
+.content {
+  margin-top: 25px;
+  padding: 15px;
+  text-align: center;
+  grid-area: content;
+  
+  .title {
+    color: @White;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    
+    span {
+      color: @Soft-violet;
+    }
+  }
+  
+  .text {
+    color: @Slightly-transparent-white-paragraph;
+    font-family: 'Lexend Deca', sans-serif;
+    padding: 1rem;
+    line-height: 1.6;
+    margin-block: 10px 20px;
+  }
+  
+  .meta-item {
+    list-style: none;
+    margin-block-end: 25px;
+    
+    .meta-title {
+      text-transform: uppercase;
+      font-weight: 700;
+      color: @White;
+      
+    }
+    
+    .meta-text {
+      font-family: 'Lexend Deca', sans-serif;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: @Slightly-transparent-white-headings;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  picture {
+    aspect-ratio: 540 / 446;
+  }
+  
+  .container {
+    grid-template-columns: 1fr 1fr;
+    max-width: 900px;
+    grid-template-areas: "content img";
+  }
+  
+  .content {
+    padding-block: 1.6rem;
+    padding-inline: 3rem 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+    .title { 
+      text-align: left;
+      margin-block-end: 20px;
+    }
+    
+    .text {
+      text-align: left;
+      padding: 0;
+      font-size: 14px;
+    }
+  }
+  
+  .meta-list {
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: 15px;
+    display: flex;
+    
+    .meta-item {
+      
+      .meta-title {
+        text-align: left;
+      }
+      
+      &:not(:first-child){
+        margin-left: 40px;
+      }
+    }
+  }
+}
